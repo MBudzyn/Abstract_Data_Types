@@ -8,6 +8,7 @@ class CircularSinglyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.length = 0
 
     def __iter__(self):
         node = self.head
@@ -21,3 +22,6 @@ class CircularSinglyLinkedList:
         new_node.next = new_node
         self.head = new_node
         self.tail = new_node
+        self.length = 1
+
+
