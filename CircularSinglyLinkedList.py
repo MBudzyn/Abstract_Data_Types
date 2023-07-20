@@ -33,7 +33,7 @@ class CircularSinglyLinkedList:
             self.length +=1
             return True
         elif index_from_0 == 0: # prepend case
-            new_node.next = self.head.next
+            new_node.next = self.head
             self.head = new_node
             self.tail.next = new_node
             self.length +=1
@@ -56,28 +56,38 @@ class CircularSinglyLinkedList:
 def unit_test_insert():
     new_CSLL = CircularSinglyLinkedList()
     new_CSLL.CreateCSLL(10)
+
     for i in range(11, 16):
         new_CSLL.insert(i, i - 10)
 
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
+    print("length:",new_CSLL.length)
+
     new_CSLL.insert(5, 2)
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
+    print("length:",new_CSLL.length)
+
     new_CSLL.insert(6, 100)
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
+    print("length:",new_CSLL.length)
+
     new_CSLL.insert(7, 0)
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
-    print(new_CSLL.tail.value)
-    print(new_CSLL.head.value)
-    print(new_CSLL.tail.next.value)
-#unit_test_insert()
+    print("length:",new_CSLL.length)
+
+    print("tail value:",new_CSLL.tail.value)
+    print("head value:",new_CSLL.head.value)
+    print("tail.next.value:",new_CSLL.tail.next.value)
+    print("length:",new_CSLL.length)
+unit_test_insert()
 
 
 
