@@ -16,3 +16,8 @@ class CircularSinglyLinkedList:
             if node.next == self.head:
                 break
             node = node.next
+    def CreateCSLL(self,value):
+        new_node = Node(value)
+        new_node.next = new_node
+        self.head = new_node
+        self.tail = new_node
