@@ -113,6 +113,12 @@ class CircularSinglyLinkedList:
             self.length -= 1
             return True
 
+    def deleteallCSLL(self):
+        self.length = 0
+        self.head = None
+        self.tail.next = None
+        self.tail = None
+
 def unit_test_insert():
     new_CSLL = CircularSinglyLinkedList()
     new_CSLL.CreateCSLL(10)
@@ -187,8 +193,8 @@ def unit_test_delete():
     print(f"tail.next.value: {new_CSLL.tail.next.value}")
     print(f"length: {new_CSLL.length}")
 
-#unit_test_insert()
-#unit_test_delete()
+unit_test_insert()
+unit_test_delete()
 
 
 
