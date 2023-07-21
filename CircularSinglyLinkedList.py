@@ -79,6 +79,40 @@ class CircularSinglyLinkedList:
                 return False
 
 
+    def deleteCSLL(self, index_from_0): # method return True if the deletion was successful False in other case
+        iter_node = self.head
+        if index_from_0 < 0 or index_from_0 > self.length: # wrong input data case
+            return False
+        if self.length == 1 and index_from_0 == 0: # one element CSLL case
+            self.head.next = None
+            self.head = None
+            self.tail = None
+            self.length -=1
+            return True
+        elif index_from_0 == 0: # delete first element case
+            self.head = self.head.next
+            self.tail.next.next = None
+            self.tail.next = self.head
+            self.length -=1
+            return  True
+        elif index_from_0 == self.length -1: # delete last element case
+
+            for i in range(index_from_0 - 1):
+                iter_node = iter_node.next
+            self.tail = iter_node
+            iter_node.next.next = None
+            iter_node.next = self.head
+            self.length -=1
+            return True
+        else:
+            for i in range(index_from_0 - 1):
+                iter_node = iter_node.next
+            prep_Node = iter_node.next.next
+            iter_node.next.next = None
+            iter_node.next = prep_Node
+            self.length -= 1
+            return True
+
 def unit_test_insert():
     new_CSLL = CircularSinglyLinkedList()
     new_CSLL.CreateCSLL(10)
@@ -89,32 +123,72 @@ def unit_test_insert():
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
-    print("length:",new_CSLL.length)
+    print(f"length: {new_CSLL.length}")
 
     new_CSLL.insert(5, 2)
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
-    print("length:",new_CSLL.length)
+    print(f"length: {new_CSLL.length}")
 
     new_CSLL.insert(6, 100)
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
-    print("length:",new_CSLL.length)
+    print(f"length: {new_CSLL.length}")
 
     new_CSLL.insert(7, 0)
     for i in new_CSLL:
         print(i.value, end=" ")
     print()
-    print("length:",new_CSLL.length)
+    print(f"length: {new_CSLL.length}")
 
-    print("tail value:",new_CSLL.tail.value)
-    print("head value:",new_CSLL.head.value)
-    print("tail.next.value:",new_CSLL.tail.next.value)
-    print("length:",new_CSLL.length)
+    print(f"tail value: {new_CSLL.tail.value}")
+    print(f"head value: {new_CSLL.head.value}")
+    print(f"tail.next.value: {new_CSLL.tail.next.value}")
+    print(f"length: {new_CSLL.length}")
 
-unit_test_insert()
+def unit_test_delete():
+    new_CSLL = CircularSinglyLinkedList()
+    new_CSLL.CreateCSLL(20)
+    new_CSLL2 = CircularSinglyLinkedList()
+    new_CSLL2.CreateCSLL(30)
+    print(new_CSLL2.deleteCSLL(0))
+    print(f"length: {new_CSLL2.length}")
+
+    for i in range(21, 29):
+        new_CSLL.insert(i, i - 20)
+
+    for i in new_CSLL:
+        print(i.value, end=" ")
+    print()
+    print(f"length: {new_CSLL.length}")
+
+    new_CSLL.deleteCSLL(8)
+    for i in new_CSLL:
+        print(i.value, end=" ")
+    print()
+    print(f"length: {new_CSLL.length}")
+
+    new_CSLL.deleteCSLL(0)
+    for i in new_CSLL:
+        print(i.value, end=" ")
+    print()
+    print(f"length: {new_CSLL.length}")
+
+    new_CSLL.deleteCSLL(4)
+    for i in new_CSLL:
+        print(i.value, end=" ")
+    print()
+    print(f"length: {new_CSLL.length}")
+
+    print(f"tail value: {new_CSLL.tail.value}")
+    print(f"head value: {new_CSLL.head.value}")
+    print(f"tail.next.value: {new_CSLL.tail.next.value}")
+    print(f"length: {new_CSLL.length}")
+
+#unit_test_insert()
+#unit_test_delete()
 
 
 
