@@ -64,6 +64,20 @@ class CircularSinglyLinkedList:
                 print(tmp_node.value, end=" ")
                 tmp_node = tmp_node.next
 
+    def searchCSLL(self,element):# method returns True if element exists in CSLL, False in other example
+        if self.head is None:
+            return False
+        else:
+            tmp_Node = self.head
+            while tmp_Node != self.tail:
+                if tmp_Node.value == element:
+                    return True
+                tmp_Node = tmp_Node.next
+            if self.tail.value == element:
+                return True
+            else:
+                return False
+
 
 def unit_test_insert():
     new_CSLL = CircularSinglyLinkedList()
@@ -99,6 +113,7 @@ def unit_test_insert():
     print("head value:",new_CSLL.head.value)
     print("tail.next.value:",new_CSLL.tail.next.value)
     print("length:",new_CSLL.length)
+
 unit_test_insert()
 
 
