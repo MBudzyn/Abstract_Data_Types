@@ -53,6 +53,18 @@ class CircularSinglyLinkedList:
             self.length +=1
             return True
 
+    def traversalCSLL(self):
+        if self.head is None:
+            print("there is no items in SCLL")
+        else:
+            tmp_node = self.head
+            print(tmp_node.value, end=" ")
+            tmp_node = tmp_node.next
+            while tmp_node != self.head:
+                print(tmp_node.value, end=" ")
+                tmp_node = tmp_node.next
+
+
 def unit_test_insert():
     new_CSLL = CircularSinglyLinkedList()
     new_CSLL.CreateCSLL(10)
@@ -88,6 +100,7 @@ def unit_test_insert():
     print("tail.next.value:",new_CSLL.tail.next.value)
     print("length:",new_CSLL.length)
 unit_test_insert()
+
 
 
 
