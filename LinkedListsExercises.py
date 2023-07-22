@@ -1,3 +1,4 @@
+from random import *
 class Node:
     def __init__(self, value = None):
         self.value = value
@@ -17,8 +18,8 @@ class LinkedList:
             yield iter_node
             iter_node = iter_node.next
     def __str__(self):
-        result = [x.value for x in self]
-        return " <-> ".join(result)
+        result = [str(x.value) for x in self]
+        return " -> ".join(result)
 
     def __len__(self):
         result = 0
@@ -37,4 +38,12 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
         return self.tail
+
+    def generate(self, n, min_number,max_number):
+        self.head = None
+        self.tail = None
+        for i in range(n):
+            self.add(randint(min_number,max_number))
+
+
 
