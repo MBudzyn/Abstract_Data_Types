@@ -55,6 +55,16 @@ class DoubleLinkedList:
                 iter_node.next = new_node
                 new_node.prev = iter_node
             return True
+    def search_is_in(self,value):
+        if self.head is None:
+            return False
+        else:
+            iter_node = self.head
+            while iter_node is not None:
+                if iter_node.value == value:
+                    return True
+                iter_node = iter_node.next
+            return False
 def unit_test_insert():
     new_dll = DoubleLinkedList()
     new_dll.createDLL(10)
@@ -72,8 +82,7 @@ def unit_test_insert():
     print(f"tail.prev.value = {new_dll.tail.prev.value}")
     print(f"head.next.value = {new_dll.head.next.value}")
 
-
-unit_test_insert()
+#unit_test_insert()
 
 
 
