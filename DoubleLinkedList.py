@@ -55,6 +55,39 @@ class DoubleLinkedList:
                 iter_node.next = new_node
                 new_node.prev = iter_node
             return True
+
+    def delete_on_index(self,index_from_0):
+        if index_from_0 < 0:
+            return False
+        elif self.head is None:
+            return False
+        elif index_from_0 ==0 and self.head == self.tail:
+            self.tail = None
+            self.head = None
+            return True
+        elif index_from_0 == 0:
+            self.head = self.head.next
+            self.head.prev.next = None
+            self.head.prev = None
+        else:
+            iter_node = self.head
+            for i in range(index_from_0-1):
+                if iter_node.next is None:
+                    return False
+                iter_node = iter_node.next
+            if iter_node == self.tail.prev:
+                iter_node.next = None
+                self.tail.prev = None
+                self.tail = iter_node
+
+            else:
+                new_node = iter_node.next
+                iter_node.next.next.prev = iter_node
+                iter_node.next = iter_node.next.next
+                new_node.next = None
+                new_node.prev = None
+
+            return True
     def search_is_in(self,value):
         if self.head is None:
             return False
@@ -82,7 +115,26 @@ def unit_test_insert():
     print(f"tail.prev.value = {new_dll.tail.prev.value}")
     print(f"head.next.value = {new_dll.head.next.value}")
 
+def unit_test_delete():
+    new_dll = DoubleLinkedList()
+    new_dll.createDLL(20)
+    print(new_dll)
+    for i in range(21,30):
+        new_dll.insert_on_index(i-20,i)
+    print(new_dll)
+    new_dll.delete_on_index(9)
+    print(new_dll)
+    new_dll.delete_on_index(0)
+    print(new_dll)
+    new_dll.delete_on_index(4)
+    print(new_dll)
+    print(f"tail.value = {new_dll.tail.value}")
+    print(f"head.value = {new_dll.head.value}")
+    print(f"tail.prev.value = {new_dll.tail.prev.value}")
+    print(f"head.next.value = {new_dll.head.next.value}")
+
 #unit_test_insert()
+unit_test_delete()
 
 
 
