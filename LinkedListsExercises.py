@@ -45,5 +45,3 @@ class LinkedList:
         for i in range(n):
             self.add(randint(min_number,max_number))
 
-
-
