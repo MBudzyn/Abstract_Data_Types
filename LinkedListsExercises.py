@@ -45,4 +45,12 @@ class LinkedList:
         for i in range(n):
             self.add(randint(min_number,max_number))
 
+    def transform_between_x(self,x):
+        iter_node = self.head
+        iter_back_node = self.tail
+
 LL = LinkedList()
+
+
+
+
