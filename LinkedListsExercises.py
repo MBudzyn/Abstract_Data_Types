@@ -84,4 +84,3 @@ class LinkedList:
             iter_node = iter_node.next
         return res
 
-
