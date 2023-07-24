@@ -45,12 +45,35 @@ class LinkedList:
         for i in range(n):
             self.add(randint(min_number,max_number))
 
+
+    def add_first(self,value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
+
     def transform_between_x(self,x):
+        result = LinkedList()
         iter_node = self.head
-        iter_back_node = self.tail
+        while iter_node:
+            if iter_node.value < x:
+                result.add_first(iter_node.value)
+            else:
+                result.add(iter_node.value)
+            iter_node = iter_node.next
+
+        return result
+
 
 LL = LinkedList()
-
+LL.generate(1,0,6)
+print(LL)
+new = LL.transform_between_x(3)
+print(new)
 
 
 
