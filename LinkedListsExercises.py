@@ -68,12 +68,20 @@ class LinkedList:
 
         return result
 
-
-LL = LinkedList()
-LL.generate(1,0,6)
-print(LL)
-new = LL.transform_between_x(3)
-print(new)
-
+    def sum_of_reversed_LL(self,secondLL):
+        res = 0
+        multiplayer = 1
+        iter_node = self.head
+        while iter_node:
+            res += iter_node.value * multiplayer
+            multiplayer = multiplayer * 10
+            iter_node = iter_node.next
+        multiplayer = 1
+        iter_node = secondLL.head
+        while iter_node:
+            res += iter_node.value * multiplayer
+            multiplayer = multiplayer * 10
+            iter_node = iter_node.next
+        return res
 
 
