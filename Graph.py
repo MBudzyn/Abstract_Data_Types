@@ -28,9 +28,23 @@ class Graph:
                 if ver not in visited:
                     visited.add(ver)
                     toVisitStack.append(ver)
+    def SSSPPwithBFS(self,startVertex,endVertex):
+        queueWithPaths = [list(startVertex)]
+        visited = set()
+        visited.add(startVertex)
+        while queueWithPaths:
+            newPath = queueWithPaths.pop(0)
+            lastVertexInPath = newPath[-1]
+            if lastVertexInPath == endVertex:
+                return newPath
+            for ver in self.gdict[lastVertexInPath]:
+                if ver not in visited:
+                    updatedPath = newPath + [ver]
+                    queueWithPaths.append(updatedPath)
+                    visited.add(ver)
 
 
-def BFSandDFSTest():
+def BFSandDFSTandSSSPPTest():
     customDict = {"a": ["b", "c"],
                   "b": ["a", "d", "e"],
                   "c": ["a", "e"],
@@ -47,6 +61,8 @@ def BFSandDFSTest():
     customGraph.BFS("c")
     print()
     customGraph.BFS("c")
+    print()
+    print(customGraph.SSSPPwithBFS("a","e"))
 
 BFSandDFSTest()
 
