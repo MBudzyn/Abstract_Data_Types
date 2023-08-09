@@ -64,6 +64,6 @@ def BFSandDFSTandSSSPPTest():
     print()
     print(customGraph.SSSPPwithBFS("a","e"))
 
-BFSandDFSTest()
+BFSandDFSTandSSSPPTest()
 
 
